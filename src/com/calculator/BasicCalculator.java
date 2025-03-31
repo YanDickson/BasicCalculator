@@ -131,8 +131,4 @@ public class BasicCalculator extends JFrame implements ActionListener {
             num1 = result;
         }
     }
-
-    public static void main(String[] args) {
-        new BasicCalculator();
-    }
 }
