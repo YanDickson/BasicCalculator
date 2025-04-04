@@ -39,8 +39,6 @@ Arithmetic operations require entering two numbers, specifying the operation and
 3. Click number buttons to enter the second number.
 4. Click the `=` button to generate a result.
 
-https://github.com/user-attachments/assets/a10a03e9-ee50-4d75-8d44-bf7b9d8e4833
-
 
 ### Clearing everything from the screen
 The `CA` button is used to clear everything that is seen in the display bar.
@@ -48,21 +46,14 @@ Once this button is clicked, the app resets to its initial state.
 1. Click number keys, or perform an operation.
 2. Click the `CA` button to remove everything from the screen.
 
-https://github.com/user-attachments/assets/85cc391c-8971-43e6-8b15-f425946f4e16
-
 
 ### Deleting entered numbers
 The `DEL` button deletes the last (right-most) integer from the entered integers.
 1. Click number keys to display numbers on screen.
 2. Click the `DEL` button as many times as needed.
 
-https://github.com/user-attachments/assets/186ff167-a17f-47d5-8b1f-53395ac6f8f5
-
 
 ### Negating a number
 The `(-)` button is used to convert the entered number to it's negative form, for example, `5` to `-5`.
 1. Click number keys to display numbers on screen.
 2. Click the `(-)` button.
-
-https://github.com/user-attachments/assets/d2d2175d-61e0-4ee1-a5ad-10cf21a26a69
-
