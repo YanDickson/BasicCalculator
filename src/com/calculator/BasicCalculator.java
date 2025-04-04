@@ -4,6 +4,12 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
+/** TODO:
+ * UPDATE: create possible arithmetic class to hold methods
+ * */
 
 public class BasicCalculator extends JFrame implements ActionListener {
     // Components
@@ -20,14 +26,14 @@ public class BasicCalculator extends JFrame implements ActionListener {
     };
 
     // Inputs and results
-    double num1;
-    double num2;
-    double result;
+    BigDecimal num1;
+    BigDecimal num2;
+    BigDecimal result;
     String operator;
 
     public BasicCalculator() {
         // Design Frame
-        setTitle("Basis Calculator");
+        setTitle("Basic Calculator");
         setSize(400, 500);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
@@ -65,6 +71,23 @@ public class BasicCalculator extends JFrame implements ActionListener {
         setVisible(true);
     }
 
+    public BigDecimal add() {
+        return num1.add(num2); // Exact: "1.1" + "2.2" = "3.3"
+    }
+
+    public BigDecimal multiply() {
+        return num1.multiply(num2); // Exact: "1.1" × "2.1" = "2.31"
+    }
+
+    public BigDecimal subtract() {
+        return num1.subtract(num2);
+    }
+
+    public BigDecimal divide(int scale) {
+        return num1.divide(num2, scale, RoundingMode.HALF_UP);
+        // Example: "1.0" / "3.0" → "0.3333333333" (scale=10)
+    }
+
     @Override
     public void actionPerformed(ActionEvent event) {
         String command = event.getActionCommand();
@@ -81,7 +104,7 @@ public class BasicCalculator extends JFrame implements ActionListener {
             display.setText(currentDisplay.concat("."));
         }
 
-        if (command.equals("(-)") && !hasDecimal) {
+        if (command.equals("(-)")) {
             double temp = Double.parseDouble(display.getText());
             temp *= -1;
             display.setText(String.valueOf(temp));
@@ -102,27 +125,27 @@ public class BasicCalculator extends JFrame implements ActionListener {
                 command.equals("x") ||
                 command.equals("÷")
         ) {
-            num1 = Double.parseDouble(currentDisplay);
+            this.num1 = new BigDecimal(currentDisplay);
             display.setText("");
             expressionDisplay.setText(num1 + " " + command);
             operator = command;
         }
 
         if (command.equals("=")) {
-            num2 = Double.parseDouble(currentDisplay);
+            this.num2 = new BigDecimal(currentDisplay);
 
             switch(operator) {
                 case "+":
-                    result = num1 + num2;
+                    result = this.add();
                     break;
                 case "-":
-                    result = num1 - num2;
+                    result = this.subtract();
                     break;
                 case "x":
-                    result = num1 * num2;
+                    result = this.multiply();
                     break;
                 case "÷":
-                    result = num1 / num2;
+                    result = this.divide(10);
                     break;
             }
 
