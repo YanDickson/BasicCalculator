@@ -57,3 +57,27 @@ The `DEL` button deletes the last (right-most) integer from the entered integers
 The `(-)` button is used to convert the entered number to it's negative form, for example, `5` to `-5`.
 1. Click number keys to display numbers on screen.
 2. Click the `(-)` button.
+
+## Lessons Learnt
+
+### 1. Displaying precise arithmetic results
+#### Problem
+In the first version of this project, the numbers inputted to the calculator were converted 
+from `string` to `double`. Calculations were then done with this double data type. In some cases, 
+the result displayed onscreen was not precise. For example, when multiplying `1.1` by `2.1` the expected result 
+was `2.31` but what was displayed was `2.3100000000000005`.
+
+#### Solution
+To get a precise arithmetic result, the `BigDecimal` class was used. Two main things were done with this class:
+1. the string inputs were converted to `BigDecimal` objects. Example:
+
+   ```
+   BigDecimal num1 = new BigDecimal("1.1");
+   BigDecimal num1 = new BigDecimal("2.1");
+    ```
+2. methods from the `BigDecimal` class were used for arithmetic calculations. Example:
+
+    ```BigDecimal result = num1.multiply(num2);```
+
+The `double` data point, while represents floating point numbers, they have limited precision because of their 
+binary representations. `BigDecimal` store numbers such that loss of precision is avoided.

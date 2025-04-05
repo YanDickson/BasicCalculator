@@ -72,11 +72,11 @@ public class BasicCalculator extends JFrame implements ActionListener {
     }
 
     public BigDecimal add() {
-        return num1.add(num2); // Exact: "1.1" + "2.2" = "3.3"
+        return num1.add(num2);
     }
 
     public BigDecimal multiply() {
-        return num1.multiply(num2); // Exact: "1.1" × "2.1" = "2.31"
+        return num1.multiply(num2);
     }
 
     public BigDecimal subtract() {
@@ -85,7 +85,6 @@ public class BasicCalculator extends JFrame implements ActionListener {
 
     public BigDecimal divide(int scale) {
         return num1.divide(num2, scale, RoundingMode.HALF_UP);
-        // Example: "1.0" / "3.0" → "0.3333333333" (scale=10)
     }
 
     @Override
@@ -105,9 +104,9 @@ public class BasicCalculator extends JFrame implements ActionListener {
         }
 
         if (command.equals("(-)")) {
-            double temp = Double.parseDouble(display.getText());
-            temp *= -1;
-            display.setText(String.valueOf(temp));
+            BigDecimal input = new BigDecimal(display.getText());
+            BigDecimal negativeValue = input.negate();
+            display.setText(negativeValue.toString());
         }
 
         if (command.equals("CA")) {
@@ -145,11 +144,11 @@ public class BasicCalculator extends JFrame implements ActionListener {
                     result = this.multiply();
                     break;
                 case "÷":
-                    result = this.divide(10);
+                    result = this.divide(5);
                     break;
             }
 
-            display.setText(String.valueOf(result));
+            display.setText(result.toString());
             expressionDisplay.setText(num1 + " " + operator + " " + num2 + " " + command);
             num1 = result;
         }
