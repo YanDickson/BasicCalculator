@@ -67,17 +67,22 @@ from `string` to `double`. Calculations were then done with this double data typ
 the result displayed onscreen was not precise. For example, when multiplying `1.1` by `2.1` the expected result 
 was `2.31` but what was displayed was `2.3100000000000005`.
 
+<img width="400" alt="Screenshot 2025-04-05 at 12 01 53 AM" src="https://github.com/user-attachments/assets/25b408e3-bbd8-4b85-9730-9aa7a0a52127" />
+
+
 #### Solution
-To get a precise arithmetic result, the `BigDecimal` class was used. Two main things were done with this class:
-1. the string inputs were converted to `BigDecimal` objects. Example:
+The `BigDecimal` class was used to get a precise arithmetic result. Two main things were done with this class:
+1. The string inputs were converted to `BigDecimal` objects. Example:
 
    ```
    BigDecimal num1 = new BigDecimal("1.1");
    BigDecimal num1 = new BigDecimal("2.1");
-    ```
-2. methods from the `BigDecimal` class were used for arithmetic calculations. Example:
+2. Methods from the `BigDecimal` class were used for arithmetic calculations. Example:
 
     ```BigDecimal result = num1.multiply(num2);```
 
-The `double` data point, while represents floating point numbers, they have limited precision because of their 
-binary representations. `BigDecimal` store numbers such that loss of precision is avoided.
+While representing floating point numbers, the `double` data point has limited precision because of their 
+binary representations. `BigDecimal` stores numbers such that loss of precision is avoided.
+
+<img width="400" alt="Screenshot 2025-04-05 at 12 20 44 AM" src="https://github.com/user-attachments/assets/a33bb52d-dd1e-418f-bd32-724398d3d2ad" />
+
