@@ -1,4 +1,6 @@
 # Basic Java Calculator App
+<img width="401" alt="Screenshot 2025-04-02 at 11 04 08 PM" src="https://github.com/user-attachments/assets/01ab7ce1-4f1d-40a2-8a74-35fc30c4899b" />
+
 This project is a basic calculator application. 
 This project serves as a beginner project to get a basic understanding of how to create 
 a Java application that has a user interface that users can interact with.
@@ -37,16 +39,19 @@ Arithmetic operations require entering two numbers, specifying the operation and
 3. Click number buttons to enter the second number.
 4. Click the `=` button to generate a result.
 
+
 ### Clearing everything from the screen
 The `CA` button is used to clear everything that is seen in the display bar.
 Once this button is clicked, the app resets to its initial state.
 1. Click number keys, or perform an operation.
-2. Click the `CA` button to remove everything from the screen. 
+2. Click the `CA` button to remove everything from the screen.
+
 
 ### Deleting entered numbers
 The `DEL` button deletes the last (right-most) integer from the entered integers.
 1. Click number keys to display numbers on screen.
 2. Click the `DEL` button as many times as needed.
+
 
 ### Negating a number
 The `(-)` button is used to convert the entered number to it's negative form, for example, `5` to `-5`.
