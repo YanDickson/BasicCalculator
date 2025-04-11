@@ -4,14 +4,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.math.BigDecimal;
-import java.math.RoundingMode;
-
-/** TODO:
- * UPDATE: create possible arithmetic class to hold methods
- * */
 
 public class BasicCalculator extends JFrame implements ActionListener {
+    ArithmeticMethods arithmetic = new ArithmeticMethods();
+
     // Components
     JPanel northPanel;
     JTextField display;
@@ -26,9 +22,9 @@ public class BasicCalculator extends JFrame implements ActionListener {
     };
 
     // Inputs and results
-    BigDecimal num1;
-    BigDecimal num2;
-    BigDecimal result;
+    String input1;
+    String input2;
+    String result;
     String operator;
 
     public BasicCalculator() {
@@ -71,22 +67,6 @@ public class BasicCalculator extends JFrame implements ActionListener {
         setVisible(true);
     }
 
-    public BigDecimal add() {
-        return num1.add(num2);
-    }
-
-    public BigDecimal multiply() {
-        return num1.multiply(num2);
-    }
-
-    public BigDecimal subtract() {
-        return num1.subtract(num2);
-    }
-
-    public BigDecimal divide(int scale) {
-        return num1.divide(num2, scale, RoundingMode.HALF_UP);
-    }
-
     @Override
     public void actionPerformed(ActionEvent event) {
         String command = event.getActionCommand();
@@ -104,9 +84,8 @@ public class BasicCalculator extends JFrame implements ActionListener {
         }
 
         if (command.equals("(-)")) {
-            BigDecimal input = new BigDecimal(display.getText());
-            BigDecimal negativeValue = input.negate();
-            display.setText(negativeValue.toString());
+            String input = display.getText();
+            display.setText(arithmetic.negate(input));
         }
 
         if (command.equals("CA")) {
@@ -124,33 +103,20 @@ public class BasicCalculator extends JFrame implements ActionListener {
                 command.equals("x") ||
                 command.equals("÷")
         ) {
-            this.num1 = new BigDecimal(currentDisplay);
+            this.input1 = currentDisplay;
             display.setText("");
-            expressionDisplay.setText(num1 + " " + command);
+            expressionDisplay.setText((input1 + " " + command));
             operator = command;
         }
 
         if (command.equals("=")) {
-            this.num2 = new BigDecimal(currentDisplay);
+            this.input2 = currentDisplay;
 
-            switch(operator) {
-                case "+":
-                    result = this.add();
-                    break;
-                case "-":
-                    result = this.subtract();
-                    break;
-                case "x":
-                    result = this.multiply();
-                    break;
-                case "÷":
-                    result = this.divide(5);
-                    break;
-            }
+            result = arithmetic.getResult(operator, input1, input2);
 
-            display.setText(result.toString());
-            expressionDisplay.setText(num1 + " " + operator + " " + num2 + " " + command);
-            num1 = result;
+            display.setText(result);
+            expressionDisplay.setText(input1 + " " + operator + " " + input2 + " " + command);
+            input1 = result;
         }
     }
 }
